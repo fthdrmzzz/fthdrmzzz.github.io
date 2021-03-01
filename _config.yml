@@ -6,7 +6,7 @@
 name: Fatih Durmaz
 
 # Short bio or description (displayed in the header).
-description: Computer Science and Engineering Student
+description: Sabanci University Junior Student in BSCS
 
 # URL of your avatar or profile pic (you could use your GitHub profile pic)
 avatar: https://raw.githubusercontent.com/fthdrmzzz/fthdrmzzz.github.io/master/picture.png
@@ -18,15 +18,15 @@ avatar: https://raw.githubusercontent.com/fthdrmzzz/fthdrmzzz.github.io/master/p
 # Includes an icon in the footer for each username you enter
 footer-links:
   dribbble:
-  email:
+  email: fatihdurmaz@sabanciuniv.edu
   facebook:
   flickr:
-  github: barryclark/jekyll-now
+  github: fthdrmzzz
   instagram:
-  linkedin:
+  linkedin: https://www.linkedin.com/in/fatihdurmaz99/
   pinterest:
   rss: # just type anything here for a working RSS icon
-  twitter: jekyllrb
+  twitter: 
   stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
