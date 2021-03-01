@@ -1,8 +1,11 @@
-[FPGA-atm-machine](https://github.com/fthdrmzzz/fpga-atm-machine)
+These are some projects that I have participated. Some of them are result of a teamwork, some are done by me individually. 
 
-[.NET-Cloud-Service](https://github.com/fthdrmzzz/Cloud-Service)
 
-[MinSetCover-Analysis](https://github.com/fthdrmzzz/MinSetCover-Analysis)
+[FPGA-atm-machine](https://github.com/fthdrmzzz/fpga-atm-machine)-Finite state machine implementation on a FPGA device. Implemented an atm machine
+
+[.NET-Cloud-Service](https://github.com/fthdrmzzz/Cloud-Service)-Implemented a cloud service using .NetFramework
+
+[MinSetCover-Analysis](https://github.com/fthdrmzzz/MinSetCover-Analysis)-Analysis of the minsetcover problem using different methods & approaches.
 
 [Self-Health-TeleHealth](https://github.com/fthdrmzzz/self_health)
 -Private Project, can show by request.
