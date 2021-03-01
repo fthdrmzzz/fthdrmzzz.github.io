@@ -5,11 +5,14 @@ permalink: /about/
 published: true
 ---
 
-Some information about you!
+### About Me
+Im a junior Computer Science and Engineering student in Sabanci University. Until now I have played role in many projects and I did one internship in Faraday Networks. 
 
-### More Information
+I leave links of some projects that are good to mention below:
 
-A place to include any other types of information that you'd like to include about yourself.
+### Projects
+
+
 
 ### Contact me
 
