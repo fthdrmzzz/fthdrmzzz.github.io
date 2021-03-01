@@ -5,7 +5,6 @@ permalink: /about/
 published: true
 ---
 
-
 Im a junior Computer Science and Engineering student in Sabanci University. Until now I have played role in many projects and I did two internship projects in Faraday Networks. 
 
 Covid pushed me to become an introvert. I play oud. Im a cat person who owns a dog.
