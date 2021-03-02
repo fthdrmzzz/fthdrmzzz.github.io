@@ -1,7 +1,7 @@
 ### 06/2020 – 08/2020   KOCAELI TURKEY
 ## Software Engineering Intern Faraday Networks
 
-• Analyzed given time-series and extracted a useful sample using PostgreSQL, Pandas, Numpy & Scipy
+• Analyzed given time-series and extracted a useful sample using PostgreSQL, Pandas, Numpy & Scipy.
 
 • Trained Machine Learning model with given time-series and observed abnormalities. Wrote a script that notifies when abnormality is encountered. Used Facebook Prophet.
 
@@ -20,7 +20,7 @@ automatically.
 ### 10/2019 – 01/2020   ISTANBUL TURKEY
 ## Student Learning Assistant Sabanci University
 
-• Provided administrative support to the Professor Kamer Kaya
+• Provided administrative support to the Professor Kamer Kaya.
 
 • Did research on smart pointers & pointers and prepared lecture notes that have detailed explanations.
 
