@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+Images\PYG{+w}{ }Built\PYG{+w}{ }from\PYG{+w}{ }Source:
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/memcached:1.6.32\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/nginx:1.27.2\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/redis:7.4.1\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/postgres:17.1\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/python:3.13.0\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/node:23.2.0\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/httpd:2.4.62\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/golang:1.23.3\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/ruby:3.3.6\PYGZhy{}bookworm
+\end{Verbatim}

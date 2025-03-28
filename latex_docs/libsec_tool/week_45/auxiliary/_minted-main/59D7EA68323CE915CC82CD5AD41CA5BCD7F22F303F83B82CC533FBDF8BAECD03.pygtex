@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/php:8.3.13\PYGZhy{}fpm\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }nginxinc/nginx\PYGZhy{}unprivileged:1.27.2\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/haproxy:3.0.6\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }fluent/fluentd\PYGZhy{}kubernetes\PYGZhy{}daemonset:v1.17.1\PYGZhy{}debian\PYGZhy{}elasticsearch8\PYGZhy{}1.2
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }nodered/node\PYGZhy{}red:4.0.5\PYGZhy{}debian
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/perl:5.41.5\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/buildpack\PYGZhy{}deps:bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/drupal:11.0.7\PYGZhy{}php8.3\PYGZhy{}fpm\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }fluent/fluentd:v1.17.1\PYGZhy{}debian\PYGZhy{}1.1
+\end{Verbatim}

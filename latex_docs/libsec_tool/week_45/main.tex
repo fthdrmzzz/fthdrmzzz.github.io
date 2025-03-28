@@ -1,0 +1,136 @@
+\documentclass[
+    table, % Option for xcolor, which loads the colortlb package
+    english,aspectratio=169,svgnames,usenames]{beamer}
+
+\usepackage[english]{babel}
+
+\usetheme{imdeasf}
+
+\usepackage{arev}
+\usepackage{graphicx}
+%\usepackage[table]{xcolor} % This loads the colortbl package
+\usepackage{multicol}
+\usepackage{tikz}
+%\usepackage{colortbl}
+%\usepackage{tablestyles}
+\usetikzlibrary{shapes}
+\usepackage[normalem]{ulem}  % for strikethrough
+\usepackage{bbding}  % For checkmark
+\usepackage{textpos}
+\usepackage{listings}
+\usepackage{csquotes}
+\usepackage[backend=biber]{biblatex} 
+\usepackage[outputdir=auxiliary]{minted}
+\usepackage{xcolor}
+\addbibresource{src/references.bib}
+\newcommand{\spitem}{\setlength\itemsep{5pt}}
+
+\hypersetup{}
+
+%% \logo{%
+%%   \parbox{15em}{%
+%%     \vspace{3em}
+%%     \includegraphics[clip,trim=0 0 0 0,width=0.8\linewidth]{Figs/logo-en}
+%%   } \vspace{0.9\textheight}
+%% } 
+
+\renewcommand{\textbf}[1]{{\bfseries\textcolor{imdeasfblue}{#1}}}
+
+\begin{document}
+
+\author{\hspace*{7.5em}\parbox{25em}{\center%
+    \textcolor{black}{%
+      Fatih Durmaz\\[0.5em]
+}}}
+
+\title{\hspace*{6.5em}\parbox{20em}{\center\LARGE%
+    \bfseries\textcolor{black}{
+Container Stats and Dlopen DlSym Analysis}}}
+
+\date{}
+
+\titlegraphic{
+  \begin{textblock}{1}(0,-12.5)
+  \includegraphics[width=3cm]{Figs/logo-en}
+  \end{textblock}
+  \begin{textblock}{1}(-4,-8.5)
+  \includegraphics[width=7cm]{Figs/triangles-colour}
+  \end{textblock}
+  \begin{textblock}{1}(-0.5,-8)
+  \includegraphics[width=0.33cm]{Figs/website-vertical-blue}
+  \end{textblock}
+  \begin{textblock}{1}(8.5,0.1)
+  \includegraphics[width=6cm]{Figs/software-blue-cutted}
+  \end{textblock}
+%  \begin{tikzpicture}
+%    \draw[fill,color=imdeasfblue] (-5,0) -- (-1,0) -- (1,10) -- (-3,10) --  cycle;
+%  \end{tikzpicture}
+}
+
+
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+
+%####################################FRAME#######################################
+
+
+
+
+\newcommand{\hlink}[2]{\hyperlink{#2}{\underline{#1}} (t.~\pageref{#2})}
+
+\makeatletter
+\def\beamer@endinputifotherversion#1{}
+\def\beamer@sectionintoc#1#2#3#4#5{%
+  {\hyperlink{Navigation#3}{%
+      \structure{\underline{#2}}} \dotfill t.\ #3 \par\smallskip}}
+\makeatother
+
+
+\begin{frame}[noframenumbering]
+  \frametitle{Table of Contents}
+  % \begin{multicols}{2}
+    \tableofcontents
+  % \end{multicols}
+\end{frame}
+
+
+\include{src/section}
+
+
+
+
+% \section{Why Docker?}
+% \begin{frame}
+% 	\frametitle{Why Docker?}
+
+
+
+% \begin{itemize} 
+%   \item Containers are widely adopted by organizations to provide multi-tenant services \cite{ghavamnia2020confine}.
+%   \item \textit{25\% of Companies Adopted Docker} \cite{datadog2018}. 
+%   \item \textit{20\% of Hosts Running Docker} \cite{datadog2018}.
+%   \item Platform as a Service market expected to be worth \$164.3 billion in 2026. \cite{paas_market}.
+% \end{itemize}
+
+%   %\begin{block}{B}
+%   %  a block
+%   %\end{block}
+
+%   % \begin{example}{E}
+%   %   an eample
+%   % \end{example}
+
+%   % \begin{alert}{A}
+%   %   an alert
+%   % \end{alert}
+
+% \end{frame}
+
+
+% ########################## FRAME ###############################
+\begin{frame}[allowframebreaks]{References}
+  \printbibliography 
+\end{frame}
+\end{document}

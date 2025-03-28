@@ -1,0 +1,10 @@
+# latexmkrc file
+
+# Set the directory for auxiliary files
+$aux_dir = 'auxiliary';
+
+# Keep the output PDF and SyncTeX files in the main directory
+$out_dir = '.';
+
+# Ensure SyncTeX is enabled for source synchronization
+$synctex_option = 1;

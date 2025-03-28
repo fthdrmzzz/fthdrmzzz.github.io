@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+       \PYG{n}{pkg\PYGZus{}analyze}\PYG{o}{.}\PYG{n}{py}\PYG{p}{:}\PYG{l+m+mi}{785} \PYG{n}{output\PYGZus{}stats}\PYG{p}{()}
+        \PYG{n}{In} \PYG{n}{total}\PYG{p}{,} \PYG{n}{Packages} \PYG{n}{of} \PYG{n}{this} \PYG{n}{container} \PYG{n}{had} \PYG{l+m+mi}{942} \PYG{n}{CVEs}         \PYG{n}{pkg\PYGZus{}analyze}\PYG{o}{.}\PYG{n}{py}\PYG{p}{:}\PYG{l+m+mi}{785}
+        \PYG{n}{In} \PYG{n}{that}\PYG{p}{,} \PYG{n}{Packages}\PYG{p}{,} \PYG{n}{that} \PYG{n}{have} \PYG{n}{libraries}\PYG{p}{,} \PYG{n}{that} \PYG{n}{have} \PYG{n}{symbols} \PYG{n}{have} \PYG{l+m+mi}{840} \PYG{n}{CVEs}
+        \PYG{n}{In} \PYG{n}{that}\PYG{p}{,} \PYG{n}{Packages}\PYG{p}{,} \PYG{n}{that} \PYG{n}{have} \PYG{n}{functions} \PYG{n}{related} \PYG{n}{to} \PYG{n}{cves}\PYG{p}{,} \PYG{n}{have} \PYG{l+m+mi}{177} \PYG{n}{related} \PYG{n}{CVEs}
+        \PYG{n}{In} \PYG{n}{that}\PYG{p}{,} \PYG{n}{Packages}\PYG{p}{,} \PYG{n}{that} \PYG{n}{have} \PYG{n}{their} \PYG{n}{vuln} \PYG{n}{functions} \PYG{n}{called}\PYG{p}{,} \PYG{n}{have} \PYG{l+m+mi}{85} \PYG{n}{related} \PYG{n}{CVEs}\PYG{o}{.}
+\end{Verbatim}

@@ -1,0 +1,122 @@
+\mode<presentation>
+
+\definecolor{imdeasfblue}{RGB}{150,181,200}
+\definecolor{imdeasfblue2}{RGB}{57,182,180}
+
+\colorlet{imdeasfbluelight}{white!25!imdeasfblue}
+\definecolor{imdeasfgray}{RGB}{127,127,127}
+\setbeamercolor{structure}{fg=imdeasfblue}
+
+\setbeamertemplate{navigation symbols}{}
+
+\setbeamersize{text margin left=2em,text margin right=2em}
+
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure}
+\setbeamercolor{block body}{parent=normal text,use=block title,fg=white,bg=imdeasfbluelight}
+
+\setbeamercolor{framesubtitle}{fg=imdeasfgray}%
+
+% \usecolortheme{rose}
+% \usecolortheme{dolphin}
+% \useinnertheme[shadow]{rounded}
+
+% \useoutertheme{infolines}
+
+\defbeamertemplate*{footline}{infolines theme}
+{%
+  \leavevmode%
+  \hspace{2ex}
+  \hbox{%
+    \begin{beamercolorbox}[wd=.20\paperwidth,ht=2.25ex,dp=3ex,left]{imdeasfblue}%
+      \scriptsize\textcolor{imdeasfgray}{Fatih Durmaz}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.55\paperwidth,ht=2.25ex,dp=3ex,center]{imdeasfblue}%
+      \scriptsize\textcolor{imdeasfgray}{\insertframenumber/\inserttotalframenumber}
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.20\paperwidth,ht=2.25ex,dp=3ex,right]{imdeasfblue}%
+      \scriptsize\textcolor{imdeasfgray}{\today}
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+
+\newcommand{\topline}{%
+  \tikz[remember picture,overlay] {%
+    \draw[line width=0.4mm, imdeasfblue2] ([yshift=-1.3cm,xshift=-1cm]current page.north west)
+    -- ([yshift=-1.3cm,xshift=0.82\paperwidth]current page.north west);}}
+
+\setbeamertemplate{frametitle}{%
+  \vspace{1em}
+%  \vphantom{g}% To avoid fluctuations per frame
+  \strut\usebeamerfont{frametitle}\textcolor{black}\insertframetitle\strut
+  \hfill
+  \hspace{1em}
+  \begin{beamercolorbox}[wd=.10\paperwidth,ht=2.25ex,dp=3ex,right]{imdeasfblue}%
+    \includegraphics[width=1.5cm]{Figs/logo-en}
+  \end{beamercolorbox}%
+  %
+  \topline
+}%
+
+%\defbeamertemplate*{frametitle}{}[1][]
+%{
+%    \begin{textblock*}{12cm}(0.5cm,1cm)
+%    {\color{gray} \fontsize{20}{43.2} \selectfont \insertframetitle}
+%    \end{textblock*}
+%    \begin{textblock*}{12cm}(0.5cm,2.5cm)
+%    {\color{gray} \fontsize{12}{24} \selectfont \insertframesubtitle}
+%    \end{textblock*}
+%}
+
+% \setbeamertemplate{headline}{%
+% \leavevmode%
+%   \hbox{%
+%     \begin{beamercolorbox}[wd=\paperwidth,ht=2.5ex,dp=1.125ex]{palette quaternary}%
+%     \insertsectionnavigationhorizontal{\paperwidth}{}{\hskip0pt plus1filll}
+%     \end{beamercolorbox}%
+%   }
+% }
+
+
+
+
+% % Colors
+
+% \setbeamercolor{block title}{use=structure,fg=structure.fg,bg=structure.fg!20!bg}
+% \setbeamercolor{block title alerted}{use=alerted text,fg=alerted text.fg,bg=alerted text.fg!20!bg}
+% \setbeamercolor{block title example}{use=example text,fg=example text.fg,bg=example text.fg!20!bg}
+
+% \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!50!bg}
+% \setbeamercolor{block body alerted}{parent=normal text,use=block title alerted,bg=block title alerted.bg!50!bg}
+% \setbeamercolor{block body example}{parent=normal text,use=block title example,bg=block title example.bg!50!bg}
+
+
+% % Inner theme
+% % \useinnertheme[shadow]{rounded}
+% % \useoutertheme{infolines}
+
+% \setbeamertemplate{blocks}[rounded][shadow=\beamer@themerounded@shadow]
+% \setbeamertemplate{items}[ball]
+% \setbeamertemplate{sections/subsections in toc}[ball]
+% \setbeamertemplate{title page}[default][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]
+% \setbeamertemplate{part page}[default][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]
+% \setbeamertemplate{section page}[default][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]
+% \setbeamertemplate{subsection page}[default][colsep=-4bp,rounded=true,shadow=\beamer@themerounded@shadow]
+
+
+% % Itms
+
+\usesubitemizeitemtemplate{%
+  \footnotesize\raise1.8pt\hbox{\color{beamerstructure}$\blacktriangleright$}%
+ }
+
+\usesubsubitemizeitemtemplate{%
+   \scriptsize\raise1.5pt\hbox{\color{beamerstructure}$\bigstar$}%
+ }
+
+
+
+%   \ifbeamer@secheader\else\setbeamertemplate{headline}[default]\fi
+ 
+\mode
+<all>

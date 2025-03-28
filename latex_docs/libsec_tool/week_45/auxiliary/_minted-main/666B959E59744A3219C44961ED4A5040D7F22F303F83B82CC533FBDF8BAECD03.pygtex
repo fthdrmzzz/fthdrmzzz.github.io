@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+Images\PYG{+w}{ }Not\PYG{+w}{ }Built\PYG{+w}{ }from\PYG{+w}{ }Source:
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }bitnami/kubectl:1.31.2\PYGZhy{}debian\PYGZhy{}12\PYGZhy{}r6
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/mysql:8.0.40\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }timberio/vector:0.42.0\PYGZhy{}debian
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }bitnami/postgresql:17.1.0\PYGZhy{}debian\PYGZhy{}12\PYGZhy{}r0
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }bitnami/redis:7.4.1\PYGZhy{}debian\PYGZhy{}12\PYGZhy{}r2
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }bitnami/sealed\PYGZhy{}secrets\PYGZhy{}controller:0.27.2\PYGZhy{}debian\PYGZhy{}12\PYGZhy{}r1
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/openjdk:24\PYGZhy{}jdk\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }bitnami/mongodb:8.0.3\PYGZhy{}debian\PYGZhy{}12\PYGZhy{}r1
+\end{Verbatim}

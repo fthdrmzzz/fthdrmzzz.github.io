@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/debian:bookworm\PYGZhy{}20241111
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }bitnami/external\PYGZhy{}dns:0.15.0\PYGZhy{}debian\PYGZhy{}12\PYGZhy{}r5
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }kong/kong\PYGZhy{}gateway:3.8.1.0\PYGZhy{}20241114\PYGZhy{}debian
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }bitnami/mariadb:11.5.2\PYGZhy{}debian\PYGZhy{}12\PYGZhy{}r6
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/tomcat:11.0.0\PYGZhy{}jdk21\PYGZhy{}openjdk\PYGZhy{}bookworm
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }library/maven:3.9.9\PYGZhy{}amazoncorretto\PYGZhy{}23\PYGZhy{}debian
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }bitnami/rabbitmq:4.0.3\PYGZhy{}debian\PYGZhy{}12\PYGZhy{}r1
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }bitnami/nginx:1.27.2\PYGZhy{}debian\PYGZhy{}12\PYGZhy{}r3
+\PYG{+w}{ }\PYGZhy{}\PYG{+w}{ }itzg/minecraft\PYGZhy{}server:debian
+\end{Verbatim}

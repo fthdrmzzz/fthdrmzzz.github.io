@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+RUN\PYG{+w}{ }/bin/sh\PYG{+w}{ }\PYGZhy{}c\PYG{+w}{ }\PYG{n+nb}{set}\PYG{+w}{ }\PYGZhy{}eux\PYG{p}{;}
+\PYG{+w}{    }apt\PYGZhy{}get\PYG{+w}{ }update\PYG{+w}{ }\PYG{o}{\PYGZam{}\PYGZam{}}\PYG{+w}{ }apt\PYGZhy{}get\PYG{+w}{ }install\PYG{+w}{ }\PYGZhy{}y\PYG{+w}{ }\PYG{l+s+se}{\PYGZbs{}}
+\PYG{+w}{        }ca\PYGZhy{}certificates\PYG{+w}{ }gcc\PYG{+w}{ }make\PYG{+w}{ }wget\PYG{+w}{ }perl\PYG{p}{;}
+\PYG{+w}{    }rm\PYG{+w}{ }\PYGZhy{}rf\PYG{+w}{ }/var/lib/apt/lists/*\PYG{p}{;}
+
+\PYG{+w}{    }wget\PYG{+w}{ }\PYGZhy{}O\PYG{+w}{ }memcached.tar.gz\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}MEMCACHED\PYGZus{}URL}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n+nb}{echo}\PYG{+w}{ }\PYG{l+s+s2}{\PYGZdq{}}\PYG{n+nv}{\PYGZdl{}MEMCACHED\PYGZus{}SHA1}\PYG{l+s+s2}{  memcached.tar.gz\PYGZdq{}}\PYG{+w}{ }\PYG{p}{|}\PYG{+w}{ }sha1sum\PYG{+w}{ }\PYGZhy{}c\PYG{+w}{ }\PYGZhy{}\PYG{p}{;}
+\PYG{+w}{    }mkdir\PYG{+w}{ }\PYGZhy{}p\PYG{+w}{ }/usr/src/memcached\PYG{p}{;}
+\PYG{+w}{    }tar\PYG{+w}{ }\PYGZhy{}xzf\PYG{+w}{ }memcached.tar.gz\PYG{+w}{ }\PYGZhy{}C\PYG{+w}{ }/usr/src/memcached\PYG{+w}{ }\PYGZhy{}\PYGZhy{}strip\PYGZhy{}components\PYG{o}{=}\PYG{l+m}{1}\PYG{p}{;}
+\PYG{+w}{    }\PYG{n+nb}{cd}\PYG{+w}{ }/usr/src/memcached\PYG{p}{;}
+\end{Verbatim}
