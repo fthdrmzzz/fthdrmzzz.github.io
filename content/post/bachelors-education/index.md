@@ -3,7 +3,7 @@ title: B.Sc. in Computer Science & Engineering – Sabanci University
 description: Completed with High Honors and specialized in static analysis and timing attack detection.
 slug: bsc-computer-science-sabanci
 date: 2022-06-15T00:00:00+0000
-image: bsc-cover.jpg
+image: cover.jpg
 categories:
   - Education
 tags:
