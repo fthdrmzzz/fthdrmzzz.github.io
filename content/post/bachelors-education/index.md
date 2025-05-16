@@ -19,4 +19,3 @@ Graduated from Sabanci University with a B.Sc. in Computer Science and Engineeri
 I was also a consistent high performer, appearing on the Dean’s High Honor List five times and ranking in the top 4% of my faculty.  
 
 > Thesis Advisors: Erkay Savas, Cemal Yilmaz  
-> Keywords: Static Analysis, Timing Attacks, Security
