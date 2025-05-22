@@ -1,82 +1,112 @@
-// Main container adjustments
-.container.main-container {
-  max-width: 1440px;
-  margin: 0 auto;
-  gap: 2rem;
-  padding: 0 1rem; // Add horizontal padding
-}
+// // Main container adjustments
+// .container.main-container {
+//   max-width: 1440px;
+//   margin: 0 auto;
+//   gap: 2rem;
+//   padding: 0 1rem; // Add horizontal padding
+// }
 
-// Equal width sidebars
-.left-sidebar, .right-sidebar {
-  flex: 0 0 250px !important; // Equal fixed width
-  min-width: 250px;
-  transition: all 0.3s ease; // Smooth resizing
+// // Equal width sidebars
+// .left-sidebar, .right-sidebar {
+//   flex: 0 0 250px !important; // Equal fixed width
+//   min-width: 250px;
+//   transition: all 0.3s ease; // Smooth resizing
   
-  // Sticky positioning
-  position: sticky;
-  top: 2rem;
-  align-self: flex-start;
-  max-height: calc(100vh - 4rem);
-  overflow-y: auto;
+//   // Sticky positioning
+//   position: sticky;
+//   top: 2rem;
+//   align-self: flex-start;
+//   max-height: calc(100vh - 4rem);
+//   overflow-y: auto;
+// }
+
+// // Left sidebar specific
+// .left-sidebar {
+//   padding-right: 1.5rem;
+// }
+
+// // Right sidebar specific
+// .right-sidebar {
+//   padding-left: 1.5rem;
+// }
+
+// // Main content area
+// .main.full-width {
+//   flex: 1 1 auto !important;
+//   max-width: 800px;
+//   margin: 0 auto;
+//   width: 100%; // Ensures proper shrinking
+// }
+
+// // Responsive behavior
+// @media (max-width: 1300px) {
+//   .container.main-container {
+//     gap: 1rem;
+//   }
+  
+//   .left-sidebar, .right-sidebar {
+//     flex: 0 0 220px !important;
+//     min-width: 220px;
+//   }
+// }
+
+// @media (max-width: 1100px) {
+//   .left-sidebar, .right-sidebar {
+//     flex: 0 0 200px !important;
+//     min-width: 200px;
+//   }
+// }
+
+// @media (max-width: 900px) {
+//   .container.main-container {
+//     flex-direction: column;
+//   }
+  
+//   .left-sidebar, .right-sidebar, .main.full-width {
+//     width: 100% !important;
+//     max-width: 100%;
+//     flex: 1 1 auto !important;
+//     position: static;
+//     max-height: none;
+//     padding: 0;
+//   }
+  
+//   // Add some vertical spacing
+//   .left-sidebar {
+//     margin-bottom: 1.5rem;
+//   }
+  
+//   .right-sidebar {
+//     margin-top: 1.5rem;
+//   }
+// }
+
+.article-list {
+  gap: 2rem !important;
 }
 
-// Left sidebar specific
-.left-sidebar {
-  padding-right: 1.5rem;
+.article-list article {
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.3rem;
 }
 
-// Right sidebar specific
+.container {
+  max-width: 1080px;        // Adjust width as desired (e.g., 960px, 1080px)
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-content {
+  width: 100%;
+}
+
+.sidebar,
 .right-sidebar {
-  padding-left: 1.5rem;
+  width: 220px;             // equal sidebar widths
 }
 
-// Main content area
-.main.full-width {
-  flex: 1 1 auto !important;
-  max-width: 800px;
-  margin: 0 auto;
-  width: 100%; // Ensures proper shrinking
+.main {
+  flex: 1;
+  max-width: 640px;         // fixed size for middle content
 }
 
-// Responsive behavior
-@media (max-width: 1300px) {
-  .container.main-container {
-    gap: 1rem;
-  }
-  
-  .left-sidebar, .right-sidebar {
-    flex: 0 0 220px !important;
-    min-width: 220px;
-  }
-}
-
-@media (max-width: 1100px) {
-  .left-sidebar, .right-sidebar {
-    flex: 0 0 200px !important;
-    min-width: 200px;
-  }
-}
-
-@media (max-width: 900px) {
-  .container.main-container {
-    flex-direction: column;
-  }
-  
-  .left-sidebar, .right-sidebar, .main.full-width {
-    width: 100% !important;
-    max-width: 100%;
-    flex: 1 1 auto !important;
-    position: static;
-    max-height: none;
-    padding: 0;
-  }
-  
-  // Add some vertical spacing
-  .left-sidebar {
-    margin-bottom: 1.5rem;
-  }
-  
-  .right-sidebar {
-    margin-top: 1.5rem;
-  }
-}

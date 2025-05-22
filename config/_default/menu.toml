@@ -7,6 +7,14 @@
 #icon = "home"
 #newtab = true
 
+[[main]]
+identifier = "cv"
+name = "CV"
+url = "/cv/main.pdf"
+weight = 7
+[main.params]
+icon= "file-user"
+
 [[social]]
 identifier = "github"
 name = "GitHub"
@@ -15,6 +23,7 @@ url = "https://github.com/fthdrmzzz"
 [social.params]
 icon = "brand-github"
 
+
 [[social]]
 identifier = "linkedin"
 name = "LinkedIn"
@@ -22,3 +31,11 @@ url = "https://linkedin.com/in/fthdrmzzz"
 
 [social.params]
 icon = "linkedin"
+
+[[social]]
+identifier = "email"
+name = "Email"
+url = "mailto:mail.fatih.durmaz@gmail.com"
+
+[social.params]
+icon = "mail"

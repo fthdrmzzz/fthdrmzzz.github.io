@@ -34,9 +34,6 @@ default = "Licensed under CC BY-NC-SA 4.0"
 [[widgets.homepage]]
 type = "search"
 
-[[widgets.homepage]]
-type = "archives"
-
 [widgets.homepage.params]
 limit = 5
 
@@ -148,3 +145,6 @@ clientSecret = ""
 [comments.cusdis]
 host = ""
 id = ""
+
+[style]
+customSCSS = ["scss/custom.scss"]
