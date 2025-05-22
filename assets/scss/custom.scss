@@ -1,3 +1,21 @@
 /*
     You can add your own custom styles here.
 */
+
+.article-content {
+    max-width: 800px; 
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.article-page--full .article-content {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.article-container {
+    max-width: 1200px; 
+}
