@@ -19,3 +19,18 @@
 .article-container {
     max-width: 1200px; 
 }
+
+.social-icons {
+  &__link[href*="linkedin"] {
+    svg {
+      filter: grayscale(100%) brightness(1.2);
+      stroke: #666;
+      transition: all 0.3s ease;
+
+      &:hover {
+        filter: grayscale(0%);
+        stroke: #0a66c2;
+      }
+    }
+  }
+}
