@@ -1,36 +1,18 @@
-/*
-    You can add your own custom styles here.
-*/
-
-.social-icons {
-  &__link[href*="linkedin"] {
-    svg {
-      filter: grayscale(100%) brightness(1.2);
-      stroke: #666;
-      transition: all 0.3s ease;
-
-      &:hover {
-        filter: grayscale(0%);
-        stroke: #0a66c2;
-      }
-    }
-  }
-}
-
-// Override the main container
+// Main container adjustments
 .container.main-container {
   max-width: 1440px;
   margin: 0 auto;
-  gap: 2rem; // Adds space between columns
+  gap: 2rem;
+  padding: 0 1rem; // Add horizontal padding
 }
 
-// Left sidebar (make wider)
-.left-sidebar {
-  flex: 0 0 300px !important; // Fixed width
-  min-width: 300px; // Prevents shrinking
-  padding-right: 1.5rem;
+// Equal width sidebars
+.left-sidebar, .right-sidebar {
+  flex: 0 0 250px !important; // Equal fixed width
+  min-width: 250px;
+  transition: all 0.3s ease; // Smooth resizing
   
-  // Add this if you want the sidebar to stay fixed while scrolling
+  // Sticky positioning
   position: sticky;
   top: 2rem;
   align-self: flex-start;
@@ -38,28 +20,40 @@
   overflow-y: auto;
 }
 
-// Main content (centered and narrower)
-.main.full-width {
-  flex: 1 1 600px !important; // Primary growing element
-  max-width: 800px; // Optimal reading width
-  margin: 0 auto;
+// Left sidebar specific
+.left-sidebar {
+  padding-right: 1.5rem;
 }
 
-// Right sidebar (make narrower)
+// Right sidebar specific
 .right-sidebar {
-  flex: 0 0 200px !important;
-  min-width: 200px;
   padding-left: 1.5rem;
 }
 
-// Responsive adjustments
-@media (max-width: 1200px) {
-  .right-sidebar {
-    display: none; // Hide on smaller screens
+// Main content area
+.main.full-width {
+  flex: 1 1 auto !important;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%; // Ensures proper shrinking
+}
+
+// Responsive behavior
+@media (max-width: 1300px) {
+  .container.main-container {
+    gap: 1rem;
   }
-  .left-sidebar {
-    flex: 0 0 250px !important;
-    min-width: 250px;
+  
+  .left-sidebar, .right-sidebar {
+    flex: 0 0 220px !important;
+    min-width: 220px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .left-sidebar, .right-sidebar {
+    flex: 0 0 200px !important;
+    min-width: 200px;
   }
 }
 
@@ -67,13 +61,22 @@
   .container.main-container {
     flex-direction: column;
   }
-  .left-sidebar, .main.full-width {
+  
+  .left-sidebar, .right-sidebar, .main.full-width {
     width: 100% !important;
     max-width: 100%;
     flex: 1 1 auto !important;
-  }
-  .left-sidebar {
     position: static;
     max-height: none;
+    padding: 0;
+  }
+  
+  // Add some vertical spacing
+  .left-sidebar {
+    margin-bottom: 1.5rem;
+  }
+  
+  .right-sidebar {
+    margin-top: 1.5rem;
   }
 }
