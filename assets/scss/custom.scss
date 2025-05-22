@@ -2,24 +2,6 @@
     You can add your own custom styles here.
 */
 
-.article-content {
-    max-width: 800px; 
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-.article-page--full .article-content {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-.article-container {
-    max-width: 1200px; 
-}
-
 .social-icons {
   &__link[href*="linkedin"] {
     svg {
@@ -32,5 +14,66 @@
         stroke: #0a66c2;
       }
     }
+  }
+}
+
+// Override the main container
+.container.main-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  gap: 2rem; // Adds space between columns
+}
+
+// Left sidebar (make wider)
+.left-sidebar {
+  flex: 0 0 300px !important; // Fixed width
+  min-width: 300px; // Prevents shrinking
+  padding-right: 1.5rem;
+  
+  // Add this if you want the sidebar to stay fixed while scrolling
+  position: sticky;
+  top: 2rem;
+  align-self: flex-start;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+// Main content (centered and narrower)
+.main.full-width {
+  flex: 1 1 600px !important; // Primary growing element
+  max-width: 800px; // Optimal reading width
+  margin: 0 auto;
+}
+
+// Right sidebar (make narrower)
+.right-sidebar {
+  flex: 0 0 200px !important;
+  min-width: 200px;
+  padding-left: 1.5rem;
+}
+
+// Responsive adjustments
+@media (max-width: 1200px) {
+  .right-sidebar {
+    display: none; // Hide on smaller screens
+  }
+  .left-sidebar {
+    flex: 0 0 250px !important;
+    min-width: 250px;
+  }
+}
+
+@media (max-width: 900px) {
+  .container.main-container {
+    flex-direction: column;
+  }
+  .left-sidebar, .main.full-width {
+    width: 100% !important;
+    max-width: 100%;
+    flex: 1 1 auto !important;
+  }
+  .left-sidebar {
+    position: static;
+    max-height: none;
   }
 }
