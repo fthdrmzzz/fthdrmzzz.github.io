@@ -18,6 +18,10 @@ pubs:
     authors: "**Fatih Durmaz**, Nureddin Kamadan, Melih Taha Öz, Musa Unal, Arsalan Javeed, Cemal Yilmaz, Erkay Savaş"
     venue: "SILM Workshop @ EuroS&P 2023"
     links:
+      - icon: "code.svg"
+        url: "https://github.com/m8/timeinspector"
       - icon: "file-text.svg"
         url: "https://silm-workshop.github.io/2023-papers/silm2023-timeinspector.pdf"
+      - icon: "link.svg"
+        url: "https://ieeexplore.ieee.org/abstract/document/10190704"
 ---

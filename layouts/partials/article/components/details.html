@@ -23,7 +23,7 @@
     </h3>
     {{ end }}
 
-    {{ if not .Params.hideMeta }}
+    {{ if not (eq .RelPermalink "/") }}
         {{ $showReadingTime := .Params.readingTime | default (.Site.Params.article.readingTime) }}
         {{ $showDate := not .Date.IsZero }}
         {{ $showFooter := or $showDate $showReadingTime }}

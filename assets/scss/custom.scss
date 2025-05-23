@@ -113,8 +113,8 @@
 
 .publications-wrapper {
   @media (min-width: 768px) {
-    padding-top: 16rem;
-    max-width: 1200px;
+    margin-top: 16rem;
+    max-width: 1000px;
     margin-right: auto;
     margin-left:4rem;
     padding-inline: 2rem;
@@ -154,4 +154,14 @@
   height: 1em;
   width: auto;
   vertical-align: text-bottom;
+}
+
+.home-wrapper {
+  @media (min-width: 768px) {
+    margin-top: 13rem;
+    max-width: 800px;
+    margin-right: auto;
+    margin-left:4rem;
+    padding-inline: 2rem;
+  }
 }
