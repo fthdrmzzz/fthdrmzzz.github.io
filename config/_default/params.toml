@@ -1,5 +1,11 @@
+[params]
+  homepage = "page/home"
+
+
 # Pages placed under these sections will be shown on homepage and archive page.
 mainSections = ["post"]
+
+
 # Output page's full content in RSS.
 rssFullContent = true
 favicon = "/favicon.png"
@@ -149,5 +155,3 @@ id = ""
 [style]
 customSCSS = ["scss/custom.scss"]
 
-[params]
-  homepage = "page/home"

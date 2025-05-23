@@ -1,39 +1,30 @@
 {{ define "main" }}
-<style>
-  @media (min-width: 768px) {
-    .publications-wrapper {
-      padding-top: 16rem;
-      max-width: 1020px;
-      margin-left: 2rem;
-      margin-right: auto;
-    }
-  }
-</style>
-
-<div class="article-content prose dark:prose-invert max-w-[720px] mx-auto publications-wrapper">
-  <!-- <h1>{{ .Title }}</h1> -->
-
+<div class="prose dark:prose-invert max-w-[720px] mx-auto publications-wrapper">
   {{ range .Params.pubs }}
-    <div style="display: grid; grid-template-columns: 2fr 1fr; grid-template-rows: auto auto; gap: 0.5rem 1rem; margin-bottom: 2rem;">
-      <!-- Row 1: Title + Venue -->
-      <div>
-        <p class="text-base font-medium" style="margin: 0;">
+    <div class="pub-entry">
+
+      <!-- Row 1 -->
+      <div class="pub-row">
+        <p class="row-left text-base font-medium m-0">
           <a href="{{ .link }}">{{ .title }}</a>
         </p>
-      </div>
-      <div class="text-sm text-muted-foreground" style="text-align: right;">
-        {{ .venue }}
-      </div>
-
-      <!-- Row 2: Authors + PDF -->
-      <div>
-        <p class="text-sm text-muted-foreground" style="margin: 0;">
-          {{ .authors | markdownify }}
+        <p class="row-right text-sm text-smart m-0">
+          {{ .venue }}
         </p>
       </div>
-      <div style="text-align: right;">
-        <a class="underline text-primary text-sm" href="{{ .link }}">[PDF]</a>
+
+      <!-- Row 2 -->
+      <div class="pub-row">
+        <div class="row-left text-sm text-smart m-0">
+          {{ .authors | markdownify }}
+        </div>
+        <div class="row-right">
+          {{ range .links }}
+            <a href="{{ .url }}" class="text-sm underline">{{ .label }}</a>
+          {{ end }}
+        </div>
       </div>
+
     </div>
   {{ end }}
 </div>
