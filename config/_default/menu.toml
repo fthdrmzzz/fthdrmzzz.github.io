@@ -1,17 +1,18 @@
 # Configure main menu and social menu
-#[[main]]
-#identifier = "home"
-#name = "Home"
-#url = "/"
-#[main.params]
-#icon = "home"
+[[main]]
+identifier = "home"
+name = "Home"
+url = "/"
+weight = 1
+[main.params]
+icon = "home"
 #newtab = true
 
 [[main]]
 identifier = "cv"
 name = "CV"
 url = "/cv/main.pdf"
-weight = 7
+weight = 3
 [main.params]
 icon= "file-user"
 

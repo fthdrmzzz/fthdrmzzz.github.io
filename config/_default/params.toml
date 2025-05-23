@@ -148,3 +148,6 @@ id = ""
 
 [style]
 customSCSS = ["scss/custom.scss"]
+
+[params]
+  homepage = "page/home"
