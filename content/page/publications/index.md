@@ -4,7 +4,7 @@ slug: "publications"
 layout: "single-publications"
 menu:
   main:
-    weight: 3
+    weight: 2
     params:
       icon: book
 pubs:

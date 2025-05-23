@@ -1,8 +1,7 @@
----
-title: "Home"
-menu:
-  main:
-    weight: 1
-    params:
-      icon: home
----
++++
+title = "Home"
+layout = "single"
+url = "/"
+hideMeta = true
+comments = false
++++
