@@ -20,7 +20,15 @@
         </div>
         <div class="row-right">
           {{ range .links }}
-            <a href="{{ .url }}" class="text-sm underline">{{ .label }}</a>
+            <a href="{{ .url }}" class="text-sm inline-block align-middle">
+              {{- if .icon -}}
+                {{- with resources.Get (printf "icons/%s" .icon) -}}
+                  <span class="icon-inline">{{ .Content | safeHTML }}</span>
+                {{- end -}}
+              {{- else if .label -}}
+                {{ .label }}
+              {{- end -}}
+            </a>
           {{ end }}
         </div>
       </div>

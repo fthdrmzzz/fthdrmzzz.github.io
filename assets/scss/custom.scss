@@ -115,7 +115,9 @@
   @media (min-width: 768px) {
     padding-top: 16rem;
     max-width: 1200px;
-    margin-inline: 2rem auto;
+    margin-right: auto;
+    margin-left:4rem;
+    padding-inline: 2rem;
   }
 }
 
@@ -133,7 +135,7 @@
 .row-left {
   flex: 1 1 0;
   min-width: 200px;
-  max-width: 600px;
+  // max-width: 600px;
 }
 
 .row-right {
@@ -145,4 +147,11 @@
 .text-smart { color: #50555f; }         /* light-mode gray */
 @media (prefers-color-scheme: dark) {
   .text-smart { color: #9ca3af; }       /* dark-mode gray  */
+}
+
+
+.icon-inline svg {
+  height: 1em;
+  width: auto;
+  vertical-align: text-bottom;
 }
