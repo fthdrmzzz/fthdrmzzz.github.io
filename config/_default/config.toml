@@ -1,5 +1,5 @@
 # Change baseurl before deploy
-baseurl = "https://fthdrmzzz.github.io"
+baseurl = "fatih-durmaz.com"
 languageCode = "en-us"
 title = "Fatih Durmaz"
 
