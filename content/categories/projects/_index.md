@@ -1,10 +1,10 @@
 ---
-title: Education
+title: Projects 
 # description: 
 image:
 
 # Badge style
 style:
-    background: "#2a9d8f"
+    background: "#752aff"
     color: "#fff"
 ---

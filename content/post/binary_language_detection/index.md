@@ -6,8 +6,6 @@ date: 2026-03-30T00:00:00+0000
 image: cover.JPG
 categories:
   - Projects 
-  - Systems
-  - Security
 tags:
   - Binary Analysis
   - ELF
