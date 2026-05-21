@@ -102,7 +102,7 @@
 
 .sidebar,
 .right-sidebar {
-  width: 220px;             // equal sidebar widths
+  width: auto;             // equal sidebar widths
 }
 
 .main {
@@ -150,15 +150,54 @@
 }
 
 
+.site-icon {
+  width: 24px;
+  height: 24px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 .icon-inline svg {
   height: 1em;
   width: auto;
   vertical-align: text-bottom;
 }
 
+.menu-social {
+  align-items: center;
+
+  li,
+  a {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+  }
+
+  svg {
+    flex: 0 0 24px;
+  }
+}
+
+.left-sidebar > #dark-mode-toggle {
+  margin-top: 0;
+}
+
+.home-bismillah {
+  color: var(--body-text-color);
+  font-family: "Aref Ruqaa", serif;
+  font-size: 1.8rem;
+  line-height: 1;
+  margin-bottom: 2rem;
+  text-align: center;
+  width: 100%;
+}
+
+.home-bismillah,
 .home-wrapper {
   @media (min-width: 768px) {
-    margin-top: 13rem;
     max-width: 800px;
     margin-right: auto;
     margin-left:4rem;

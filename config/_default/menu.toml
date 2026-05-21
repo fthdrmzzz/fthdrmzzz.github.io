@@ -1,4 +1,4 @@
-# Configure main menu and social menu
+# Configure main, social, and contact menus
 [[main]]
 identifier = "home"
 name = "Home"
@@ -33,9 +33,29 @@ url = "https://linkedin.com/in/fthdrmzzz"
 icon = "linkedin"
 
 [[social]]
+identifier = "gscholar"
+name = "Google Scholar"
+url = "https://scholar.google.com/citations?user=QVHavYYAAAAJ&hl=en"
+
+[social.params]
+icon = "google-scholar"
+
+[[contact]]
 identifier = "email"
 name = "Email"
 url = "mailto:mail.fatih.durmaz@gmail.com"
+weight = 1
 
-[social.params]
+[contact.params]
 icon = "mail"
+newTab = false
+
+[[contact]]
+identifier = "appointment"
+name = "Appointment"
+url = "https://www.cal.eu/fatih.durmaz/30minappointment"
+weight = 2
+
+[contact.params]
+icon = "appointment"
+newTab = true
