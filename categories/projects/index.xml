@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Projects on Fatih Durmaz</title><link>https://fatih-durmaz.com/categories/projects/</link><description>Recent content in Projects on Fatih Durmaz</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Mon, 30 Mar 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://fatih-durmaz.com/categories/projects/index.xml" rel="self" type="application/rss+xml"/><item><title>Practical Language Detection for Scripts and Binaries in a Debian Container</title><link>https://fatih-durmaz.com/p/practical-binary-language-detection/</link><pubDate>Mon, 30 Mar 2026 00:00:00 +0000</pubDate><guid>https://fatih-durmaz.com/p/practical-binary-language-detection/</guid><description>&lt;img src="https://fatih-durmaz.com/p/practical-binary-language-detection/cover.jpg" alt="Featured image of post Practical Language Detection for Scripts and Binaries in a Debian Container" /&gt;&lt;p&gt;&lt;a class="link" href="https://github.com/fthdrmzzz/binary_language_finder/tree/main" target="_blank" rel="noopener"
+&gt;Project Link Here&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="summary"&gt;Summary
+&lt;/h2&gt;&lt;p&gt;We cannot determine a file’s “implementation language” with perfect certainty—especially for native binaries—but we can build a pragmatic classifier that performs well in real containers. We combine (in order) shebang parsing for scripts, magic-byte/container checks for known formats (ZIP/JAR, Java class files, PE/.NET), and non-executing inspection of ELF/PE metadata plus a small set of distinctive fingerprints (sections/notes, symbol mangling prefixes, and embedded build-info strings). The key is to prioritise deterministic signals first, treat native “C” as a fallback bucket, and keep safe defaults (notably: we avoid &lt;code&gt;ldd&lt;/code&gt; unless we trust the binary).&lt;/p&gt;
+&lt;h2 id="intro"&gt;Intro
+&lt;/h2&gt;&lt;p&gt;Binaries do not include an explicit “written in X” label. However, toolchains leave fingerprints—sometimes obvious (a shebang), sometimes subtle (a section name or a mangled symbol). With a careful priority order and modest expectations, we can convert a file list into a useful language breakdown efficiently.&lt;/p&gt;
+&lt;h2 id="detection-strategy-and-priority-order"&gt;Detection strategy and priority order
+&lt;/h2&gt;&lt;p&gt;Our pipeline is layered: we apply the most authoritative, least ambiguous checks first, then fall back to heuristics only when necessary.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt; 1
+&lt;/span&gt;&lt;span class="lnt"&gt; 2
+&lt;/span&gt;&lt;span class="lnt"&gt; 3
+&lt;/span&gt;&lt;span class="lnt"&gt; 4
+&lt;/span&gt;&lt;span class="lnt"&gt; 5
+&lt;/span&gt;&lt;span class="lnt"&gt; 6
+&lt;/span&gt;&lt;span class="lnt"&gt; 7
+&lt;/span&gt;&lt;span class="lnt"&gt; 8
+&lt;/span&gt;&lt;span class="lnt"&gt; 9
+&lt;/span&gt;&lt;span class="lnt"&gt;10
+&lt;/span&gt;&lt;span class="lnt"&gt;11
+&lt;/span&gt;&lt;span class="lnt"&gt;12
+&lt;/span&gt;&lt;span class="lnt"&gt;13
+&lt;/span&gt;&lt;span class="lnt"&gt;14
+&lt;/span&gt;&lt;span class="lnt"&gt;15
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;flowchart TD
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; A[Input: list file or directory] --&amp;gt; B{Exists &amp;amp; readable?}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; B -- no --&amp;gt; X[Missing/Unreadable]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; B -- yes --&amp;gt; C{Shebang &amp;#39;#!&amp;#39;?}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; C -- yes --&amp;gt; S[Map interpreter (env/python/perl/sh/node...) -&amp;gt; script language]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; C -- no --&amp;gt; D{Magic bytes / container?}
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; D -- CAFEBABE --&amp;gt; J1[Java .class]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; D -- ZIP --&amp;gt; J2[Check META-INF/MANIFEST.MF or .class entries -&amp;gt; Java JAR]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; D -- MZ/PE --&amp;gt; N1[PE: check CLR header directory -&amp;gt; .NET; confirm metadata signature]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; D -- 0x7fELF --&amp;gt; E[ELF: inspect sections/notes/dynamic/symbols/tokens]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; D -- other --&amp;gt; T[Text-only heuristics -&amp;gt; weak classification or Other]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; E --&amp;gt; G[Go fingerprints]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; E --&amp;gt; R[Rust fingerprints]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; E --&amp;gt; CPP[C++ fingerprints]
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; E --&amp;gt; CC[C fallback]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;We rely on shebang behaviour defined by Linux &lt;code&gt;execve&lt;/code&gt; for interpreter scripts, making it reliable and inexpensive. For binaries, we first determine the container type (ELF/PE/ZIP/class file) using magic bytes. Once identified as ELF, we inspect metadata using non-executing tools (&lt;code&gt;readelf&lt;/code&gt;, &lt;code&gt;nm&lt;/code&gt;, &lt;code&gt;strings&lt;/code&gt;) and scan for stable tokens.&lt;/p&gt;
+&lt;h2 id="fingerprints-per-language"&gt;Fingerprints per language
+&lt;/h2&gt;&lt;p&gt;We use the following actionable fingerprints as evidence (not proof):&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Category&lt;/th&gt;
+&lt;th&gt;High-signal fingerprints&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;Python&lt;/td&gt;
+&lt;td&gt;Shebang includes &lt;code&gt;python&lt;/code&gt; / &lt;code&gt;python3&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Perl&lt;/td&gt;
+&lt;td&gt;Shebang includes &lt;code&gt;perl&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Shell&lt;/td&gt;
+&lt;td&gt;Shebang includes &lt;code&gt;sh&lt;/code&gt;/&lt;code&gt;bash&lt;/code&gt;/&lt;code&gt;dash&lt;/code&gt;/&lt;code&gt;zsh&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;JavaScript (Node)&lt;/td&gt;
+&lt;td&gt;Shebang &lt;code&gt;#!/usr/bin/env node&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Java&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;.class&lt;/code&gt; magic &lt;code&gt;0xCAFEBABE&lt;/code&gt;; JAR = ZIP with &lt;code&gt;META-INF/&lt;/code&gt; or &lt;code&gt;.class&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;.NET / Mono&lt;/td&gt;
+&lt;td&gt;PE with CLR header; metadata signature &lt;code&gt;0x424A5342&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Go&lt;/td&gt;
+&lt;td&gt;ELF section &lt;code&gt;.go.buildinfo&lt;/code&gt;; magic &lt;code&gt;\xff Go buildinf:&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Rust&lt;/td&gt;
+&lt;td&gt;Symbols with &lt;code&gt;_R&lt;/code&gt;; &lt;code&gt;rust_eh_personality&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C++&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;_Z&lt;/code&gt; mangling; &lt;code&gt;__gxx_personality_v0&lt;/code&gt;; &lt;code&gt;libstdc++&lt;/code&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;C&lt;/td&gt;
+&lt;td&gt;Fallback if no stronger evidence&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Other&lt;/td&gt;
+&lt;td&gt;Unknown or unsupported&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="reproducing-the-detection-steps"&gt;Reproducing the detection steps
+&lt;/h2&gt;&lt;p&gt;We can replicate the classification process with the following commands:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# File type triage&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;file -b -- /path/to/thing
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Shebang extraction&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;head -n &lt;span class="m"&gt;1&lt;/span&gt; /path/to/script
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;span class="lnt"&gt;3
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# ELF inspection (non-executing)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;readelf -W -S -n -d /path/to/bin
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;nm -D /path/to/bin &lt;span class="p"&gt;|&lt;/span&gt; head
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;span class="lnt"&gt;2
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;# Token scan&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;strings -a /path/to/bin &lt;span class="p"&gt;|&lt;/span&gt; grep -E &lt;span class="s1"&gt;&amp;#39;Go buildinf|__gxx_personality_v0|rust_eh_personality&amp;#39;&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; head
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;h2 id="limitations-and-safe-defaults"&gt;Limitations and safe defaults
+&lt;/h2&gt;&lt;p&gt;We avoid &lt;code&gt;ldd&lt;/code&gt; by default because it may execute code on untrusted binaries. We prefer &lt;code&gt;readelf -d&lt;/code&gt; or &lt;code&gt;objdump -p&lt;/code&gt; for dependency inspection. Stripped or statically linked binaries reduce observable signals, often resulting in classification as “C (fallback)” or “Other”. Mixed-language binaries introduce ambiguity; our goal is a reproducible best-effort classification rather than certainty.&lt;/p&gt;
+&lt;h2 id="call-to-action"&gt;Call to action
+&lt;/h2&gt;&lt;p&gt;We can implement a Python 3.11+ CLI that wraps this pipeline: read a file list (or scan a directory), classify each path, and output results (JSON + CSV) along with summary counts. The implementation should rely on non-executing tools (&lt;code&gt;file&lt;/code&gt;, &lt;code&gt;readelf&lt;/code&gt;, &lt;code&gt;nm&lt;/code&gt;, &lt;code&gt;strings&lt;/code&gt;) and Python-based parsing for shebang and magic bytes.&lt;/p&gt;
+&lt;p&gt;Example usage:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;span class="lnt"&gt;1
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;langclassify --list bin_list.txt --root / --json-out results.json --csv-out results.csv
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;&lt;p&gt;This approach is sufficient for container audits, system analysis, and guiding deeper reverse-engineering efforts.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;div class="chroma"&gt;
+&lt;table class="lntable"&gt;&lt;tr&gt;&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;
+&lt;td class="lntd"&gt;
+&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-fallback" data-lang="fallback"&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;/div&gt;</description></item></channel></rss>

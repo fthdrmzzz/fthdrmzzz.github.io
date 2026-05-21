@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Embedded Systems on Fatih Durmaz</title><link>https://fatih-durmaz.com/tags/embedded-systems/</link><description>Recent content in Embedded Systems on Fatih Durmaz</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><lastBuildDate>Sat, 01 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://fatih-durmaz.com/tags/embedded-systems/index.xml" rel="self" type="application/rss+xml"/><item><title>Multi-Tenant FPGA Sharing Research at Nokia Bell Labs</title><link>https://fatih-durmaz.com/p/nokia-fpga-cloud-research/</link><pubDate>Sat, 01 Apr 2023 00:00:00 +0000</pubDate><guid>https://fatih-durmaz.com/p/nokia-fpga-cloud-research/</guid><description>&lt;img src="https://fatih-durmaz.com/p/nokia-fpga-cloud-research/cover.JPG" alt="Featured image of post Multi-Tenant FPGA Sharing Research at Nokia Bell Labs" /&gt;&lt;p&gt;In 2023, I was selected for a research internship at &lt;strong&gt;Nokia Bell Labs&lt;/strong&gt; in Lannion, France, where I had the privilege to collaborate with &lt;strong&gt;Semih Ince&lt;/strong&gt;, &lt;strong&gt;Dr. Julien Lallet&lt;/strong&gt;, and &lt;strong&gt;Dr. Renaud Santoro&lt;/strong&gt; on cutting-edge cloud FPGA solutions.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;The Challenge:&lt;/strong&gt;&lt;br&gt;
+Cloud accelerator instances were significantly underutilizing FPGA resources, leaving valuable computing power idle. Our team proposed an innovative solution - a secure multi-tenant framework that would allow isolated instances to safely share the same FPGA device.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;My Contribution:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Developed a complete proof-of-concept environment using:
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Xilinx ZCU102 FPGA&lt;/strong&gt; platform&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Embedded Linux&lt;/strong&gt; (Yocto/Petalinux)&lt;/li&gt;
+&lt;li&gt;Container orchestration with &lt;strong&gt;Docker&lt;/strong&gt; and &lt;strong&gt;Kubernetes (k3s)&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Designed the security architecture for tenant isolation&lt;/li&gt;
+&lt;li&gt;Created comprehensive documentation enabling team reproduction&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;The Experience:&lt;/strong&gt;&lt;br&gt;
+Working alongside this talented and diverse team taught me invaluable lessons about:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The unique challenges of hardware virtualization&lt;/li&gt;
+&lt;li&gt;Security considerations in shared accelerator environments&lt;/li&gt;
+&lt;li&gt;Bridging the gap between embedded systems and cloud infrastructure&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This intensive three-month project (April-July 2023) allowed me to apply my security knowledge in novel ways while deepening my expertise in both embedded systems and cloud-native technologies. Seeing our solution come to life - from concept to working prototype - remains one of my most rewarding professional experiences.&lt;/p&gt;</description></item></channel></rss>
